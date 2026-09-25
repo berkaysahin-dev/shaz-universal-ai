@@ -1,6 +1,6 @@
 <div align="center">
 
-# Vision Universal AI
+# Shaz Universal AI
 
 <p align="center">
   <a href="README.md"><b>English</b></a> | <a href="README.tr.md"><b>Türkçe</b></a>
@@ -11,12 +11,12 @@
 
 *A unified, production-grade, open-source Universal AI SDK for TypeScript and JavaScript.*
 
-[![npm version](https://img.shields.io/npm/v/vision-universal-ai.svg?style=flat-square&color=blue)](https://www.npmjs.com/package/vision-universal-ai)
+[![npm version](https://img.shields.io/npm/v/shaz-universal-ai.svg?style=flat-square&color=blue)](https://www.npmjs.com/package/shaz-universal-ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![TypeScript: Strict](https://img.shields.io/badge/TypeScript-Strict%20Mode-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Node: 18+](https://img.shields.io/badge/Node.js-18%2B%20%7C%20Edge%20%7C%20Bun%20%7C%20Deno-brightgreen?style=flat-square)](https://nodejs.org)
-[![Tests: 31/31 Passed](https://img.shields.io/badge/Tests-31%2F31%20Passing-success.svg?style=flat-square)](https://github.com/berkaysahin-dev/vision-universal-ai)
-[![Zero Dependencies](https://img.shields.io/badge/Runtime%20Deps-Zero-orange?style=flat-square)](https://github.com/berkaysahin-dev/vision-universal-ai)
+[![Tests: 31/31 Passed](https://img.shields.io/badge/Tests-31%2F31%20Passing-success.svg?style=flat-square)](https://github.com/berkaysahin-dev/shaz-universal-ai)
+[![Zero Dependencies](https://img.shields.io/badge/Runtime%20Deps-Zero-orange?style=flat-square)](https://github.com/berkaysahin-dev/shaz-universal-ai)
 
 [Features](#features) • [Supported Providers](#supported-providers) • [Quick Start](#quick-start) • [Streaming](#real-time-streaming) • [Tool Calling](#autonomous-multi-step-tool-calling) • [Structured Output](#strict-structured-output-json-schema) • [Model Routing](#model-routing--zero-downtime-fallback) • [CLI](#interactive-cli) • [Documentation](#configuration--options)
 
@@ -26,7 +26,7 @@
 
 ## Overview
 
-**Vision Universal AI** is an enterprise-grade Universal AI SDK designed to eliminate vendor lock-in across the AI ecosystem. It provides a single, strictly typed, robust API that unifies **Google Gemini, OpenAI, Anthropic Claude, Groq, DeepSeek, OpenRouter, Ollama, and Mistral AI**.
+**Shaz Universal AI** is an enterprise-grade Universal AI SDK designed to eliminate vendor lock-in across the AI ecosystem. It provides a single, strictly typed, robust API that unifies **Google Gemini, OpenAI, Anthropic Claude, Groq, DeepSeek, OpenRouter, Ollama, and Mistral AI**.
 
 Switching from Gemini to OpenAI or Claude requires changing only a single configuration parameter. Your tools, streaming pipelines, JSON schema extractions, and application logic remain **100% identical**.
 ```
@@ -34,10 +34,10 @@ Switching from Gemini to OpenAI or Claude requires changing only a single config
                     │      Your Application         │
                     └──────────────┬────────────────┘
                                    │
-                   import { VisionAI } from "vision-universal-ai"
+                   import { VisionAI } from "shaz-universal-ai"
                                    │
                     ┌──────────────▼────────────────┐
-                    │    Vision Universal AI SDK    │
+                    │    Shaz Universal AI SDK    │
                     │   Pipeline • Retry • Router   │
                     └──────┬───┬───┬───┬───┬───┬───┬┘
                            │   │   │   │   │   │   │
@@ -86,13 +86,13 @@ Switching from Gemini to OpenAI or Claude requires changing only a single config
 
 ## Installation
 ```bash
-npm install vision-universal-ai
+npm install shaz-universal-ai
 ```
 
 or with yarn, pnpm, or bun:
 ```bash
-pnpm add vision-universal-ai
-bun add vision-universal-ai
+pnpm add shaz-universal-ai
+bun add shaz-universal-ai
 ```
 
 ---
@@ -101,7 +101,7 @@ bun add vision-universal-ai
 
 Get a working response in 3 lines of code:
 ```ts
-import { VisionAI } from "vision-universal-ai";
+import { VisionAI } from "shaz-universal-ai";
 
 const ai = new VisionAI({
   provider: "gemini",
@@ -143,7 +143,7 @@ const ai = new VisionAI({ provider: "mistral", apiKey: process.env.MISTRAL_API_K
 
 Stream tokens in real-time with standard `for await...of`:
 ```ts
-import { VisionAI } from "vision-universal-ai";
+import { VisionAI } from "shaz-universal-ai";
 
 const ai = new VisionAI({ provider: "gemini" });
 const stream = await ai.stream("Write a compelling short story about artificial intelligence.");
@@ -161,9 +161,9 @@ console.log("\nTotal tokens used:", finalResponse.usage?.totalTokens);
 
 ## Autonomous Multi-Step Tool Calling
 
-Define standard JavaScript functions as tools. Vision Universal AI automatically executes tool requests and feeds results back to the model until a final answer is reached:
+Define standard JavaScript functions as tools. Shaz Universal AI automatically executes tool requests and feeds results back to the model until a final answer is reached:
 ```ts
-import { VisionAI, type AITool } from "vision-universal-ai";
+import { VisionAI, type AITool } from "shaz-universal-ai";
 
 const weatherTool: AITool<{ city: string }> = {
   name: "get_weather",
@@ -197,7 +197,7 @@ console.log(response.text);
 
 Extract strictly typed, validated JSON structures:
 ```ts
-import { VisionAI } from "vision-universal-ai";
+import { VisionAI } from "shaz-universal-ai";
 
 interface ProductItem {
   id: string;
@@ -238,7 +238,7 @@ console.log(result.data.inStock); // Type-safe boolean
 
 Protect your production apps against 429 Rate Limits and 5xx server downtime with resilient failover chains:
 ```ts
-import { VisionAI } from "vision-universal-ai";
+import { VisionAI } from "shaz-universal-ai";
 
 const ai = new VisionAI({
   routing: {
@@ -305,7 +305,7 @@ import {
   RateLimitError,
   TimeoutError,
   CapabilityNotSupportedError
-} from "vision-universal-ai";
+} from "shaz-universal-ai";
 
 try {
   const response = await ai.chat("...");
@@ -342,7 +342,7 @@ const ai = new VisionAI({
 
 Add any bespoke internal enterprise LLM in ~20 lines:
 ```ts
-import { VisionAI, type AIProvider } from "vision-universal-ai";
+import { VisionAI, type AIProvider } from "shaz-universal-ai";
 
 class MyEnterpriseLLM implements AIProvider {
   public readonly name = "enterprise-ai";
@@ -372,7 +372,7 @@ ai.register(new MyEnterpriseLLM());
 
 ## Interactive CLI
 
-Vision Universal AI comes with a built-in terminal CLI:
+Shaz Universal AI comes with a built-in terminal CLI:
 ```bash
 # Scaffold a new configuration file & .env template
 npx vision-ai init
@@ -391,7 +391,7 @@ npx vision-ai models
 
 ## Testing
 
-Vision Universal AI includes a 100% deterministic test suite:
+Shaz Universal AI includes a 100% deterministic test suite:
 ```bash
 # Run unit & integration test suites
 npm test
@@ -425,12 +425,12 @@ We welcome community contributions! Please review [CONTRIBUTING.md](./CONTRIBUTI
 
 ## License
 
-Vision Universal AI is open-source software licensed under the [MIT License](./LICENSE).
+Shaz Universal AI is open-source software licensed under the [MIT License](./LICENSE).
 
 ---
 
 <div align="center">
 
-**[Shaz Vision](https://shazvision.com)** • *Building the Intelligent Future*
+**[Shaz Agency](https://shazagency.com)** • *Building the Intelligent Future*
 
 </div>
