@@ -38,11 +38,11 @@
   "homepage": "https://shazvision.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shazvision/vision-universal-ai.git",
+    "url": "https://github.com/berkaysahin-dev/shaz-universal-ai.git",
     "directory": "packages/core"
   },
   "bugs": {
-    "url": "https://github.com/shazvision/vision-universal-ai/issues"
+    "url": "https://github.com/berkaysahin-dev/shaz-universal-ai/issues"
   },
   "license": "MIT"
 }

@@ -8,10 +8,10 @@
   "homepage": "https://shazvision.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/berkaysahin-dev/vision-universal-ai.git"
+    "url": "https://github.com/berkaysahin-dev/shaz-universal-ai.git"
   },
   "bugs": {
-    "url": "https://github.com/berkaysahin-dev/vision-universal-ai/issues"
+    "url": "https://github.com/berkaysahin-dev/shaz-universal-ai/issues"
   },
   "license": "MIT",
   "engines": {

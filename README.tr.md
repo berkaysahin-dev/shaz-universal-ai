@@ -10,12 +10,12 @@
 
 *TypeScript ve JavaScript için birleşik, kurumsal düzeyde, açık kaynaklı Evrensel Yapay Zeka SDK'sı.*
 
-[![npm version](https://img.shields.io/npm/v/vision-universal-ai.svg?style=flat-square&color=blue)](https://www.npmjs.com/package/vision-universal-ai)
+[![CI](https://github.com/berkaysahin-dev/shaz-universal-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/berkaysahin-dev/shaz-universal-ai/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![TypeScript: Strict](https://img.shields.io/badge/TypeScript-Strict%20Mode-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Node: 18+](https://img.shields.io/badge/Node.js-18%2B%20%7C%20Edge%20%7C%20Bun%20%7C%20Deno-brightgreen?style=flat-square)](https://nodejs.org)
-[![Tests: 31/31 Passed](https://img.shields.io/badge/Tests-31%2F31%20Passing-success.svg?style=flat-square)](https://github.com/berkaysahin-dev/vision-universal-ai)
-[![Zero Dependencies](https://img.shields.io/badge/Runtime%20Deps-Zero-orange?style=flat-square)](https://github.com/berkaysahin-dev/vision-universal-ai)
+[![Tests: 31/31 Passed](https://img.shields.io/badge/Tests-31%2F31%20Passing-success.svg?style=flat-square)](https://github.com/berkaysahin-dev/shaz-universal-ai)
+[![Zero Dependencies](https://img.shields.io/badge/Runtime%20Deps-Zero-orange?style=flat-square)](https://github.com/berkaysahin-dev/shaz-universal-ai)
 
 [Özellikler](#özellikler) • [Desteklenen Sağlayıcılar](#desteklenen-sağlayıcılar) • [Hızlı Başlangıç](#hızlı-başlangıç) • [Akış (Streaming)](#gerçek-zamanlı-akış-streaming) • [Araç Çağırma](#otonom-çok-adımlı-araç-çağırma-tool-calling) • [Yapılandırılmış Çıktı](#kesin-yapılandırılmış-çıktı-json-şeması) • [Model Yönlendirme](#model-yönlendirme-ve-sıfır-kesintili-yedekleme) • [CLI](#etkileşimli-terminal-cli) • [Dokümantasyon](#yapılandırma-ve-seçenekler)
 

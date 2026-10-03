@@ -11,7 +11,7 @@
 
 *A unified, production-grade, open-source Universal AI SDK for TypeScript and JavaScript.*
 
-[![npm version](https://img.shields.io/npm/v/shaz-universal-ai.svg?style=flat-square&color=blue)](https://www.npmjs.com/package/shaz-universal-ai)
+[![CI](https://github.com/berkaysahin-dev/shaz-universal-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/berkaysahin-dev/shaz-universal-ai/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![TypeScript: Strict](https://img.shields.io/badge/TypeScript-Strict%20Mode-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Node: 18+](https://img.shields.io/badge/Node.js-18%2B%20%7C%20Edge%20%7C%20Bun%20%7C%20Deno-brightgreen?style=flat-square)](https://nodejs.org)
