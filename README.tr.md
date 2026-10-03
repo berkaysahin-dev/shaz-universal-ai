@@ -11,6 +11,7 @@
 *TypeScript ve JavaScript için birleşik, kurumsal düzeyde, açık kaynaklı Evrensel Yapay Zeka SDK'sı.*
 
 [![CI](https://github.com/berkaysahin-dev/shaz-universal-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/berkaysahin-dev/shaz-universal-ai/actions/workflows/ci.yml)
+[![GitHub Stars](https://img.shields.io/github/stars/berkaysahin-dev/shaz-universal-ai?style=flat-square&logo=github&color=gold)](https://github.com/berkaysahin-dev/shaz-universal-ai/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![TypeScript: Strict](https://img.shields.io/badge/TypeScript-Strict%20Mode-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Node: 18+](https://img.shields.io/badge/Node.js-18%2B%20%7C%20Edge%20%7C%20Bun%20%7C%20Deno-brightgreen?style=flat-square)](https://nodejs.org)
