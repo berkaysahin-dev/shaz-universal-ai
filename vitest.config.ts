@@ -13,16 +13,16 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@vision-ai/core": path.resolve(__dirname, "packages/core/src"),
-      "@vision-ai/openai": path.resolve(__dirname, "packages/openai/src"),
-      "@vision-ai/gemini": path.resolve(__dirname, "packages/gemini/src"),
-      "@vision-ai/anthropic": path.resolve(__dirname, "packages/anthropic/src"),
-      "@vision-ai/groq": path.resolve(__dirname, "packages/groq/src"),
-      "@vision-ai/deepseek": path.resolve(__dirname, "packages/deepseek/src"),
-      "@vision-ai/openrouter": path.resolve(__dirname, "packages/openrouter/src"),
-      "@vision-ai/ollama": path.resolve(__dirname, "packages/ollama/src"),
-      "@vision-ai/mistral": path.resolve(__dirname, "packages/mistral/src"),
-      "vision-universal-ai": path.resolve(__dirname, "packages/sdk/src")
+      "@vision-ai/core": path.resolve(import.meta.dirname, "packages/core/src"),
+      "@vision-ai/openai": path.resolve(import.meta.dirname, "packages/openai/src"),
+      "@vision-ai/gemini": path.resolve(import.meta.dirname, "packages/gemini/src"),
+      "@vision-ai/anthropic": path.resolve(import.meta.dirname, "packages/anthropic/src"),
+      "@vision-ai/groq": path.resolve(import.meta.dirname, "packages/groq/src"),
+      "@vision-ai/deepseek": path.resolve(import.meta.dirname, "packages/deepseek/src"),
+      "@vision-ai/openrouter": path.resolve(import.meta.dirname, "packages/openrouter/src"),
+      "@vision-ai/ollama": path.resolve(import.meta.dirname, "packages/ollama/src"),
+      "@vision-ai/mistral": path.resolve(import.meta.dirname, "packages/mistral/src"),
+      "vision-universal-ai": path.resolve(import.meta.dirname, "packages/sdk/src")
     }
   }
 });
