@@ -44,5 +44,8 @@
   "bugs": {
     "url": "https://github.com/berkaysahin-dev/shaz-universal-ai/issues"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "minimatch": "^11.0.1"
+  }
 }
