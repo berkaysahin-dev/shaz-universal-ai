@@ -22,5 +22,8 @@
     "clean": "rimraf dist tsconfig.tsbuildinfo"
   },
   "author": "Vision Universal AI Contributors",
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "minimatch": "^11.0.1"
+  }
 }
