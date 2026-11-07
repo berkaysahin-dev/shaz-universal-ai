@@ -72,9 +72,9 @@ Gemini'den OpenAI veya Claude'a geçmek yalnızca tek bir yapılandırma paramet
 
 | Sağlayıcı | Sohbet (Chat) | Akış (Streaming) | Araç Çağırma (Tool Calling) | Görsel (Vision) | Yapılandırılmış JSON | Gömme (Embeddings) | Muhakeme (R1/o1) | Varsayılan Model |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Google Gemini** | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | `gemini-2.0-flash` |
+| **Google Gemini** | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | `gemini-2.5-flash` |
 | **OpenAI** | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | `gpt-4o` |
-| **Anthropic Claude** | ✔ | ✔ | ✔ | ✔ | ✔ | *(Yok)* | *(Yok)* | `claude-3-5-sonnet-20241022` |
+| **Anthropic Claude** | ✔ | ✔ | ✔ | ✔ | ✔ | *(Yok)* | *(Yok)* | `claude-sonnet-5-5` |
 | **Groq** | ✔ | ✔ | ✔ | ✔ | ✔ | *(Yok)* | *(Yok)* | `llama-3.3-70b-versatile` |
 | **DeepSeek** | ✔ | ✔ | ✔ | *(Yok)* | ✔ | *(Yok)* | ✔ | `deepseek-chat` |
 | **OpenRouter** | ✔ | ✔ | ✔ | ✔ | ✔ | *(Yok)* | ✔ | `meta-llama/llama-3.3-70b-instruct` |
@@ -86,14 +86,19 @@ Gemini'den OpenAI veya Claude'a geçmek yalnızca tek bir yapılandırma paramet
 ---
 
 ## Kurulum
+> Paketler **henüz npm'de yayınlanmadı**. npm'de `shaz-universal-ai` veya `vision-universal-ai` adıyla görünen bir paket bu projeye **ait değildir** — kurmayın. Kaynaktan derleyin:
+
 ```bash
-npm install vision-universal-ai
+git clone https://github.com/berkaysahin-dev/shaz-universal-ai.git
+cd shaz-universal-ai
+npm install
+npm run build
 ```
 
-veya yarn, pnpm ya da bun ile:
+Ardından SDK'yı kendi projenize yerel klasörden ekleyin:
+
 ```bash
-pnpm add vision-universal-ai
-bun add vision-universal-ai
+npm install ../shaz-universal-ai/packages/sdk
 ```
 
 ---
@@ -331,7 +336,7 @@ const ai = new VisionAI({
   provider: "gemini",              // Aktif varsayılan sağlayıcı
   apiKey: process.env.API_KEY,     // Açık API anahtarı (veya ortam değişkeninden okur)
   baseUrl: "https://custom-proxy", // Özel proxy uç noktası
-  defaultModel: "gemini-2.0-flash",// Model ezme (override)
+  defaultModel: "gemini-2.5-flash",// Model ezme (override)
   timeoutMs: 30000,                // Milisaniye cinsinden zaman aşımı (varsayılan: 60000ms)
   maxRetries: 3                    // Üstel geri çekilme deneme sayısı (varsayılan: 3)
 });
@@ -374,6 +379,9 @@ ai.register(new MyEnterpriseLLM());
 ## Etkileşimli Terminal CLI
 
 Vision Universal AI yerleşik bir terminal CLI aracı ile birlikte gelir:
+
+> Bu komutları **klonlanan depo içinde, `npm install && npm run build` sonrasında** çalıştırın — CLI npm'de yayınlanmadığı için `npx` yerel çalışma alanı komutunu kullanmalıdır.
+
 ```bash
 # Yeni bir yapılandırma dosyası ve .env şablonu oluşturun
 npx vision-ai init

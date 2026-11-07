@@ -49,7 +49,7 @@ export class AnthropicProvider implements AIProvider {
   constructor(config: AnthropicProviderConfig = {}) {
     this.apiKey = config.apiKey || (typeof process !== "undefined" ? process.env?.ANTHROPIC_API_KEY || "" : "");
     this.baseUrl = (config.baseUrl || "https://api.anthropic.com/v1").replace(/\/$/, "");
-    this.defaultModel = config.defaultModel || "claude-3-5-sonnet-20241022";
+    this.defaultModel = config.defaultModel || "claude-sonnet-5-5";
     this.anthropicVersion = config.anthropicVersion || "2023-06-01";
     this.fetchFn = config.fetch || globalThis.fetch.bind(globalThis);
   }

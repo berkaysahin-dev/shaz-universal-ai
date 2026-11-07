@@ -106,7 +106,7 @@ export interface ChatOptions {
   messages?: ChatMessage[];
 
   /**
-   * Target model identifier (e.g. 'gemini-2.0-flash', 'gpt-4o', 'claude-3-5-sonnet')
+   * Target model identifier (e.g. 'gemini-2.5-flash', 'gpt-4o', 'claude-sonnet-5-5')
    */
   model?: string;
 

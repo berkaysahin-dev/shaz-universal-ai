@@ -40,11 +40,11 @@ describe("Provider Adapters Integration & Protocol Compliance", () => {
 
     const res = await gemini.chat({
       prompt: "Hello Gemini",
-      model: "gemini-2.0-flash",
+      model: "gemini-2.5-flash",
       temperature: 0.7
     });
 
-    expect(capturedUrl).toContain("models/gemini-2.0-flash:generateContent?key=test-gemini-key");
+    expect(capturedUrl).toContain("models/gemini-2.5-flash:generateContent?key=test-gemini-key");
     expect(capturedBody.contents?.[0]?.parts?.[0]?.text).toBe("Hello Gemini");
     expect(capturedBody.generationConfig?.temperature).toBe(0.7);
     expect(res.text).toBe("Gemini response text");
@@ -117,7 +117,7 @@ describe("Provider Adapters Integration & Protocol Compliance", () => {
     const res = await anthropic.chat({
       systemInstruction: "You are a helpful assistant.",
       prompt: "Hello Claude",
-      model: "claude-3-5-sonnet-20241022"
+      model: "claude-sonnet-5-5"
     });
 
     expect(capturedHeaders["x-api-key"]).toBe("test-anthropic-key");
