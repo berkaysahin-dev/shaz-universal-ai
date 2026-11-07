@@ -82,7 +82,7 @@ async function runDemo() {
   });
 
   // Call Gemini
-  const res1 = await aiGemini.chat({ prompt: "Merhaba!", model: "gemini-2.0-flash" });
+  const res1 = await aiGemini.chat({ prompt: "Merhaba!", model: "gemini-2.5-flash" });
   console.log(`  ${green("✔")} [GEMINI]    ➔ "${res1.text}" (Tokens: ${res1.usage?.totalTokens})`);
 
   // Switch to OpenAI

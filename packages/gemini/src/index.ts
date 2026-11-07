@@ -50,7 +50,7 @@ export class GeminiProvider implements AIProvider {
   constructor(config: GeminiProviderConfig = {}) {
     this.apiKey = config.apiKey || (typeof process !== "undefined" ? process.env?.GEMINI_API_KEY || "" : "");
     this.baseUrl = (config.baseUrl || "https://generativelanguage.googleapis.com").replace(/\/$/, "");
-    this.defaultModel = config.defaultModel || "gemini-2.0-flash";
+    this.defaultModel = config.defaultModel || "gemini-2.5-flash";
     this.fetchFn = config.fetch || globalThis.fetch.bind(globalThis);
   }
 

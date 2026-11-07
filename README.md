@@ -35,7 +35,7 @@ Switching from Gemini to OpenAI or Claude requires changing only a single config
                     │      Your Application         │
                     └──────────────┬────────────────┘
                                    │
-                   import { VisionAI } from "shaz-universal-ai"
+                   import { VisionAI } from "vision-universal-ai"
                                    │
                     ┌──────────────▼────────────────┐
                     │    Shaz Universal AI SDK    │
@@ -72,28 +72,34 @@ Switching from Gemini to OpenAI or Claude requires changing only a single config
 
 | Provider | Chat | Streaming | Tool Calling | Vision | Structured JSON | Embeddings | Reasoning (R1/o1) | Default Model |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Google Gemini** | | | | | | | | `gemini-2.0-flash` |
-| **OpenAI** | | | | | | | | `gpt-4o` |
-| **Anthropic Claude** | | | | | | *(N/A)* | *(N/A)* | `claude-3-5-sonnet-20241022` |
-| **Groq** | | | | | | *(N/A)* | *(N/A)* | `llama-3.3-70b-versatile` |
-| **DeepSeek** | | | | *(N/A)* | | *(N/A)* | | `deepseek-chat` |
-| **OpenRouter** | | | | | | *(N/A)* | | `meta-llama/llama-3.3-70b-instruct` |
-| **Ollama (Local)** | | | | | | | *(N/A)* | `llama3.2` |
-| **Mistral AI** | | | | | | | *(N/A)* | `mistral-large-latest` |
+| **Google Gemini** | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | `gemini-2.5-flash` |
+| **OpenAI** | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | `gpt-4o` |
+| **Anthropic Claude** | ✔ | ✔ | ✔ | ✔ | ✔ | *(N/A)* | *(N/A)* | `claude-sonnet-5-5` |
+| **Groq** | ✔ | ✔ | ✔ | ✔ | ✔ | *(N/A)* | *(N/A)* | `llama-3.3-70b-versatile` |
+| **DeepSeek** | ✔ | ✔ | ✔ | *(N/A)* | ✔ | *(N/A)* | ✔ | `deepseek-chat` |
+| **OpenRouter** | ✔ | ✔ | ✔ | ✔ | ✔ | *(N/A)* | ✔ | `meta-llama/llama-3.3-70b-instruct` |
+| **Ollama (Local)** | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | *(N/A)* | `llama3.2` |
+| **Mistral AI** | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | *(N/A)* | `mistral-large-latest` |
 
 *(N/A indicates the provider does not provide that endpoint in their API. Calling an unsupported endpoint throws a clean `CapabilityNotSupportedError`.)*
 
 ---
 
 ## Installation
+
+> The packages are **not published to npm yet**. Any npm package named `shaz-universal-ai` or `vision-universal-ai` is **not** from this project — do not install it. Build from source instead:
+
 ```bash
-npm install shaz-universal-ai
+git clone https://github.com/berkaysahin-dev/shaz-universal-ai.git
+cd shaz-universal-ai
+npm install
+npm run build
 ```
 
-or with yarn, pnpm, or bun:
+Then add the SDK to your own project from the local folder:
+
 ```bash
-pnpm add shaz-universal-ai
-bun add shaz-universal-ai
+npm install ../shaz-universal-ai/packages/sdk
 ```
 
 ---
@@ -102,7 +108,7 @@ bun add shaz-universal-ai
 
 Get a working response in 3 lines of code:
 ```ts
-import { VisionAI } from "shaz-universal-ai";
+import { VisionAI } from "vision-universal-ai";
 
 const ai = new VisionAI({
   provider: "gemini",
@@ -144,7 +150,7 @@ const ai = new VisionAI({ provider: "mistral", apiKey: process.env.MISTRAL_API_K
 
 Stream tokens in real-time with standard `for await...of`:
 ```ts
-import { VisionAI } from "shaz-universal-ai";
+import { VisionAI } from "vision-universal-ai";
 
 const ai = new VisionAI({ provider: "gemini" });
 const stream = await ai.stream("Write a compelling short story about artificial intelligence.");
@@ -164,7 +170,7 @@ console.log("\nTotal tokens used:", finalResponse.usage?.totalTokens);
 
 Define standard JavaScript functions as tools. Shaz Universal AI automatically executes tool requests and feeds results back to the model until a final answer is reached:
 ```ts
-import { VisionAI, type AITool } from "shaz-universal-ai";
+import { VisionAI, type AITool } from "vision-universal-ai";
 
 const weatherTool: AITool<{ city: string }> = {
   name: "get_weather",
@@ -198,7 +204,7 @@ console.log(response.text);
 
 Extract strictly typed, validated JSON structures:
 ```ts
-import { VisionAI } from "shaz-universal-ai";
+import { VisionAI } from "vision-universal-ai";
 
 interface ProductItem {
   id: string;
@@ -239,7 +245,7 @@ console.log(result.data.inStock); // Type-safe boolean
 
 Protect your production apps against 429 Rate Limits and 5xx server downtime with resilient failover chains:
 ```ts
-import { VisionAI } from "shaz-universal-ai";
+import { VisionAI } from "vision-universal-ai";
 
 const ai = new VisionAI({
   routing: {
@@ -306,7 +312,7 @@ import {
   RateLimitError,
   TimeoutError,
   CapabilityNotSupportedError
-} from "shaz-universal-ai";
+} from "vision-universal-ai";
 
 try {
   const response = await ai.chat("...");
@@ -331,7 +337,7 @@ const ai = new VisionAI({
   provider: "gemini",              // Active default provider
   apiKey: process.env.API_KEY,     // Explicit API Key (or reads from env)
   baseUrl: "https://custom-proxy", // Custom proxy endpoint
-  defaultModel: "gemini-2.0-flash",// Model override
+  defaultModel: "gemini-2.5-flash",// Model override
   timeoutMs: 30000,                // Request timeout in ms (default: 60000ms)
   maxRetries: 3                    // Exponential backoff retries (default: 3)
 });
@@ -343,7 +349,7 @@ const ai = new VisionAI({
 
 Add any bespoke internal enterprise LLM in ~20 lines:
 ```ts
-import { VisionAI, type AIProvider } from "shaz-universal-ai";
+import { VisionAI, type AIProvider } from "vision-universal-ai";
 
 class MyEnterpriseLLM implements AIProvider {
   public readonly name = "enterprise-ai";
@@ -373,7 +379,7 @@ ai.register(new MyEnterpriseLLM());
 
 ## Interactive CLI
 
-Shaz Universal AI comes with a built-in terminal CLI:
+Shaz Universal AI comes with a built-in terminal CLI. Run these **inside the cloned repository after `npm install && npm run build`** — the CLI is not on npm, so `npx` must resolve the local workspace binary:
 ```bash
 # Scaffold a new configuration file & .env template
 npx vision-ai init

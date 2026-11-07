@@ -103,7 +103,7 @@ async function handleModels() {
   console.log(`
 Configured Providers:
   1. Google Gemini  (GEMINI_API_KEY: ${process.env.GEMINI_API_KEY ? "CONFIGURED" : "MISSING"})
-     - Default Model: gemini-2.0-flash
+     - Default Model: gemini-2.5-flash
      - Capabilities: Chat, Streaming, Tools, Vision, Audio, PDF, JSON Schema, Embeddings
 
   2. OpenAI         (OPENAI_API_KEY: ${process.env.OPENAI_API_KEY ? "CONFIGURED" : "MISSING"})
@@ -111,7 +111,7 @@ Configured Providers:
      - Capabilities: Chat, Streaming, Tools, Vision, JSON Schema, Embeddings, DALL-E
 
   3. Anthropic      (ANTHROPIC_API_KEY: ${process.env.ANTHROPIC_API_KEY ? "CONFIGURED" : "MISSING"})
-     - Default Model: claude-3-5-sonnet-20241022
+     - Default Model: claude-sonnet-5-5
      - Capabilities: Chat, Streaming, Tools, Vision, PDF, JSON Schema
 
   4. Groq           (GROQ_API_KEY: ${process.env.GROQ_API_KEY ? "CONFIGURED" : "MISSING"})

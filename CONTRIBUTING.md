@@ -8,8 +8,8 @@ Thank you for your interest in contributing to **Vision Universal AI**! We appre
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/vision-universal-ai/vision-universal-ai.git
-   cd vision-universal-ai
+   git clone https://github.com/berkaysahin-dev/shaz-universal-ai.git
+   cd shaz-universal-ai
    ```
 
 2. **Install dependencies**:
