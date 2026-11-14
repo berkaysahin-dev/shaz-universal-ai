@@ -10,7 +10,7 @@ cd /d "%~dp0"
 
 echo ================================================================
 echo           VISION UNIVERSAL AI - UNIFIED AI SDK ENGINE
-echo                     by Shaz Vision (shazvision.com)
+echo                     by Shaz Vision (shaz.vision)
 echo ================================================================
 echo.
 if not exist ".env" (

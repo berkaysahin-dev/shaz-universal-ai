@@ -55,8 +55,8 @@
     "structured-output",
     "shaz-vision"
   ],
-  "author": "Shaz Vision <contact@shazvision.com> (https://shazvision.com)",
-  "homepage": "https://shazvision.com",
+  "author": "Shaz Vision <contact@shaz.vision> (https://shaz.vision)",
+  "homepage": "https://shaz.vision",
   "repository": {
     "type": "git",
     "url": "https://github.com/berkaysahin-dev/shaz-universal-ai.git",

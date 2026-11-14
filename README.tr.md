@@ -440,6 +440,6 @@ Vision Universal AI, [MIT Lisansı](./LICENSE) altında lisanslanmış açık ka
 
 <div align="center">
 
-**[Shaz Vision](https://shazvision.com)** • *Geleceği Akılla İnşa Ediyoruz*
+**[Shaz Vision](https://shaz.vision)** • *Geleceği Akılla İnşa Ediyoruz*
 
 </div>

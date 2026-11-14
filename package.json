@@ -4,8 +4,8 @@
   "type": "module",
   "private": true,
   "description": "One SDK. Every AI. Enterprise-grade, production-ready Universal AI SDK for TypeScript and JavaScript.",
-  "author": "Berkay Şahin <berkay@shazvision.com> (https://shazvision.com)",
-  "homepage": "https://shazvision.com",
+  "author": "Berkay Şahin <berkay@shaz.vision> (https://shaz.vision)",
+  "homepage": "https://shaz.vision",
   "repository": {
     "type": "git",
     "url": "https://github.com/berkaysahin-dev/shaz-universal-ai.git"
