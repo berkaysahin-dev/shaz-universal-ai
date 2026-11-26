@@ -8,3 +8,4 @@ export * from "./structured/index.js";
 export * from "./router/index.js";
 export * from "./registry/index.js";
 export * from "./client/index.js";
+export * from "./license.js";

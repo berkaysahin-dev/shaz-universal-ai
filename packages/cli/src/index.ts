@@ -1,10 +1,111 @@
 import * as readline from "node:readline";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { VisionAI } from "vision-universal-ai";
+import {
+  VisionAI,
+  requireShazLicense,
+  normalizeLicenseKey,
+  type VerifyLicenseOptions
+} from "vision-universal-ai";
+
+function loadDotenvLicenseVars(envPath: string): void {
+  try {
+    if (!fs.existsSync(envPath)) return;
+    const content = fs.readFileSync(envPath, "utf-8");
+    for (const rawLine of content.split(/\r?\n/)) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith("#") || !line.includes("=")) continue;
+      const idx = line.indexOf("=");
+      const key = line.slice(0, idx).trim();
+      if (!key.startsWith("SHAZ_LICENSE_")) continue;
+      const val = line
+        .slice(idx + 1)
+        .split(" #")[0]
+        .trim()
+        .replace(/^["']|["']$/g, "");
+      if (val && !process.env[key]) {
+        process.env[key] = val;
+      }
+    }
+  } catch {
+    // Ignore unreadable .env
+  }
+}
+
+function persistEnvLicenseKey(envPath: string, licenseKey: string): void {
+  try {
+    if (!fs.existsSync(envPath)) return;
+    const lines = fs.readFileSync(envPath, "utf-8").split(/\r?\n/);
+    let updated = false;
+    const nextLines = lines.map((line) => {
+      if (line.trim().startsWith("SHAZ_LICENSE_KEY=")) {
+        updated = true;
+        return `SHAZ_LICENSE_KEY=${licenseKey}`;
+      }
+      return line;
+    });
+    if (!updated) {
+      nextLines.push(`SHAZ_LICENSE_KEY=${licenseKey}`);
+    }
+    fs.writeFileSync(envPath, nextLines.filter((l, i, arr) => i < arr.length - 1 || l !== "").join("\n") + "\n", "utf-8");
+  } catch {
+    // Non-fatal
+  }
+}
+
+async function promptForLicenseKey(): Promise<string> {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  return new Promise((resolve) => {
+    console.log("Shaz Agency Lisans Doğrulama");
+    console.log("Doğru format: SHAZ-XXXX-XXXX-XXXX-XXXX");
+    rl.question("Lütfen lisans anahtarınızı girin: ", (answer) => {
+      rl.close();
+      resolve(normalizeLicenseKey(answer));
+    });
+  });
+}
+
+export async function ensureCliLicense(options?: VerifyLicenseOptions): Promise<void> {
+  const envPath = path.resolve(process.cwd(), ".env");
+  loadDotenvLicenseVars(envPath);
+
+  let key = normalizeLicenseKey(options?.licenseKey ?? process.env.SHAZ_LICENSE_KEY);
+  const isInteractive = Boolean(process.stdin.isTTY);
+
+  if (!key && isInteractive) {
+    const entered = await promptForLicenseKey();
+    if (entered) {
+      key = entered;
+      process.env.SHAZ_LICENSE_KEY = entered;
+    }
+  }
+
+  const result = await requireShazLicense({
+    ...options,
+    licenseKey: key || undefined
+  });
+
+  if (key) {
+    persistEnvLicenseKey(envPath, result.key);
+  }
+}
 
 export async function runCLI(args: string[]) {
   const command = args[0] || "help";
+
+  const needsLicense = ["init", "chat", "models", "test"].includes(command);
+  if (needsLicense) {
+    try {
+      await ensureCliLicense();
+    } catch (err: any) {
+      console.error(`Lisans doğrulama hatası: ${err?.message || "Lisans doğrulanamadı."}`);
+      process.exitCode = 1;
+      return;
+    }
+  }
 
   switch (command) {
     case "init":
@@ -62,6 +163,9 @@ Examples:
 async function handleInit() {
   const targetEnv = path.resolve(process.cwd(), ".env.example");
   const envContent = `# Vision Universal AI - Environment Configuration
+SHAZ_LICENSE_KEY=
+SHAZ_LICENSE_API_URL=http://localhost:3000/api/licenses/verify
+SHAZ_LICENSE_DOMAIN=
 GEMINI_API_KEY=your_gemini_api_key_here
 OPENAI_API_KEY=your_openai_api_key_here
 ANTHROPIC_API_KEY=your_anthropic_api_key_here
